@@ -56,10 +56,10 @@ function update()
 {
   var that = this;
   request.get('http://0.0.0.0:5000/api/games').end(function(error, res){
-            var json = JSON.parse(res.text);
-            localStorage.clear();
-            localStorage.setItem('games', JSON.stringify(json))
-            that.setState({});
+    var json = JSON.parse(res.text);
+    localStorage.clear();
+    localStorage.setItem('games', JSON.stringify(json))
+    that.setState({});
   })
 }
 
@@ -123,7 +123,29 @@ class Store extends React.Component
       }
     });
   }
-  
+  updateGame(id, name, desc, img, link, year)
+  {
+      console.log(name);
+      var that = this;
+      request.put('http://0.0.0.0:5000/api/games/' + id )
+      .send({ name: name, desc: desc, img: img, link: link, year: year})
+      .set('Content-Type', 'application/json').end(function(err, res){
+        if (err || !res.ok) {
+          alert('Error updating');
+        } else {
+          request.get('http://0.0.0.0:5000/api/games').end(function(error, res){
+            if (res) {
+              var json = JSON.parse(res.text);
+              localStorage.clear();
+              localStorage.setItem('games', JSON.stringify(json)) ;
+              that.setState( {}) ;                
+            } else {
+              console.log(error );
+            }
+          }); 
+        }
+      });       
+  }
   render()
   {
     update.bind(this)
@@ -140,6 +162,14 @@ class Store extends React.Component
             <p><a href={game.link} target="_blank">Official Website</a></p>
             <Button onClick={this.buttonClicked.bind(this, game)}>Purchase</Button>
             <Button onClick={this.removeGame.bind(this, game)}>Remove Game</Button>
+            <form onSubmit={this.updateGame.bind(this, game.id, name, game.desc, game.img, game.link, game.year)}>
+              <input type="text" placeholder="New name" name="name" />
+              {/*<input type="text" placeholder="New description" desc="name" />
+              <input type="text" placeholder="New release year" year="year" />
+              <input type="text" placeholder="New image path" img="img" />
+              <input type="text" placeholder="New link" link="link" />*/}
+              <input type="submit" value="Submit" />
+            </form>
           </li>
       )
     })
