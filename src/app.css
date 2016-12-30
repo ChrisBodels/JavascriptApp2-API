@@ -1,0 +1,118 @@
+/**
+  *@author Chris Bodels
+  *
+  *
+  */
+
+#Nav {
+	margin:0px 0 0 20px; 
+}
+
+#Nav li a{
+	display: block;
+}
+
+
+#Nav ul{
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0;
+    	padding: 0;
+}
+
+#Nav ul li{
+	display:inline;
+	float:left;
+	margin-bottom:20px; 
+}
+
+/* :first-child pseudo selector with rounded top left corner */
+#Nav ul li:first-child a { 
+	border-top-left-radius:12px; 
+}
+
+/* :last-child pseudo selector with rounded top right corner */
+#Nav ul li:last-child a {
+	border-top-right-radius:12px; 
+}
+
+/* background color set to RGBA, with opacity on 0.5 and also using text-shadow */
+#Nav ul li a { padding:20px; 
+	background: rgba(255,138,30,0.3); 
+	text-decoration: none; 
+	font: bold 14px Helvetica, Sans-Serif; 
+	letter-spacing: -1px; 
+	color: #402e16;
+ 	text-shadow: #eee 0px 0px 2px; 
+}
+
+/* hover state shows a linear gradient and opacity it brought down to 0.9 and also shows a very slight grey gradient on top */
+#Nav ul li a:hover {
+ 	background: -webkit-gradient(linear, right bottom, left top, color-stop(0, rgb(237,227,112)), 		color-stop(0.72, rgb(255,173,10))) !important;
+ 	background: -moz-linear-gradient(right bottom, rgb(237,227,112) 0%, rgb(255,173,10) 72%) !	 	 important;
+ 	background-color:rgb(255,173,10) !important; 
+}
+
+#Nav ul li a.active { 
+	background: rgba(255,138,30,0.8) !important; 
+}
+
+#items{
+	list-style: none;
+	font-size: 0px;
+	margin-left: -2.5%;
+}
+
+#items li{
+	display: inline-block;
+	padding: 10px;
+	margin: 0 0 2.5% 2.5%;
+	background: #fff;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	font-size: 1rem;
+	vertical-align: top;
+	box-shadow: 0 0 5px #ddd;
+}
+
+#items li img{
+	max-width: 250px;
+	max-height: 250px;
+	margin: 10px;
+}
+
+#items li p{
+	font-size: 1.3em;
+	line-height: 1.5em;
+	color: #999;
+	max-width: 200px
+}
+
+#gamePage img{
+	max-width: 500px;
+	max-height: 500px;
+	margin: 10px;
+}
+
+#gamePage h1{
+	padding: 30px;
+	margin: 0 0 2.5% 2.5%;
+	
+}
+
+#gamePage p{
+	margin: 0 0 2.5% 2.5%;
+}
+
+#gamePage ul{
+	display: block;
+}
+
+#Comment li{
+	display: inline;
+}
+
+#CommentBox{
+	border-style: solid;
+	border-width: 5px;
+}
